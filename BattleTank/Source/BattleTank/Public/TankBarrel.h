@@ -24,5 +24,5 @@ private:
 	float MinElevation = 0.f;
 
 	UPROPERTY(EditAnywhere)
-	float MaxElevation = 100.f;
+	float MaxElevation = 30.f;
 };

@@ -4,7 +4,7 @@
 #include "Public/TankTurret.h"
 
 
-void UTankTurret::RotateTurret(float RelativeSpeed)
+void UTankTurret::Rotate(float RelativeSpeed)
 {
 	RelativeSpeed = FMath::Clamp<float>(RelativeSpeed, -1.0f, 1.0f);
 	auto RotationChange = RelativeSpeed * MaxDegreesPerSecond * GetWorld()->DeltaTimeSeconds;

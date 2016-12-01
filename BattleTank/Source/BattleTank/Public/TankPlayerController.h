@@ -24,13 +24,13 @@ private:
 
 	void AimTowardsCrosshair();
 
-	UPROPERTY(EditAnywhere, Category = "Controls")
+	UPROPERTY(EditDefaultsOnly, Category = "Controls")
 	float CrosshairXLocation = 0.5;
 
-	UPROPERTY(EditAnywhere, Category = "Controls")
+	UPROPERTY(EditDefaultsOnly, Category = "Controls")
 	float CrosshairYLocation = 0.333;
 
-	UPROPERTY(EditAnywhere, Category = "Controls")
+	UPROPERTY(EditDefaultsOnly, Category = "Controls")
 	float LineTraceRange = 1000000;
 
 	bool GetSightRayHitLocation(FVector& HitLocation) const;

@@ -42,23 +42,17 @@ void ATank::BeginPlay()
 
 void ATank::Fire()
 {
-
-	if (!Barrel) { return; }
-
-	// Spawn a projectile at socket on barrel
-	auto p = GetWorld()->SpawnActor<AProjectile>(
-		Projectile,
-		Barrel->GetSocketLocation(FName("Projectile")),
-		Barrel->GetSocketRotation(FName("Projectile")));
-	
-	if (!p)
+	bool isReloaded = (FPlatformTime::Seconds() - LastFireTime) > ReloadTimeInSeconds;
+	if (Barrel && isReloaded)
 	{
-		UE_LOG(LogTemp, Warning, TEXT("Projectile not spawned"));
-	}
-	else
-	{
-		UE_LOG(LogTemp, Warning, TEXT("Projectile spawned %s"), *p->GetName());
+
+		// Spawn a projectile at socket on barrel
+		auto p = GetWorld()->SpawnActor<AProjectile>(
+			ProjectileBlueprint,
+			Barrel->GetSocketLocation(FName("Projectile")),
+			Barrel->GetSocketRotation(FName("Projectile")));
 		p->LaunchProjectile(LaunchSpeed);
+		LastFireTime = FPlatformTime::Seconds();
 	}
 }
 

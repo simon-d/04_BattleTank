@@ -1,5 +1,3 @@
-// Fill out your copyright notice in the Description page of Project Settings.
-
 #pragma once
 
 #include "GameFramework/NavMovementComponent.h"
@@ -26,6 +24,9 @@ public:
 	void IntendTurnRight(float Throw);
 
 private:
+	// Called from the pathfinding login
+	virtual void RequestDirectMove(const FVector& MoveVelocity, bool bForceMaxSpeed) override;
+
 	UTankTrack* LeftTrack = nullptr;
 	UTankTrack* RightTrack = nullptr;
 
